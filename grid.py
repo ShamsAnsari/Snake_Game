@@ -91,13 +91,17 @@ class Grid:
 
     @staticmethod
     def get_background_color(loc):
+        color = None
         if loc.row % 2 == 0:
             if loc.col % 2 == 0:
-                return Grid.grid_color[0]
+                color = Grid.grid_color[0]
             else:
-                return Grid.grid_color[1]
+                color = Grid.grid_color[1]
         else:
             if loc.col % 2 == 1:
-                return Grid.grid_color[0]
+                color = Grid.grid_color[0]
             else:
-                return Grid.grid_color[1]
+                color = Grid.grid_color[1]
+        rand_change = random.randint(-50, 10)
+        color = pygame.Color(color.r + rand_change, color.g + rand_change, color.b + rand_change)
+        return color

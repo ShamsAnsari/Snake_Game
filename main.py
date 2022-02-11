@@ -16,6 +16,7 @@ pygame.init()
 screen = pygame.display.set_mode(W_SIZE)
 pygame.display.set_caption(GAME_TITLE)
 clock = pygame.time.Clock()
+# screen.fill(pygame.Color(0,0,200))
 
 # Create Grid
 BLOCK_SIZE = 25
@@ -28,7 +29,7 @@ snake = Snake(grid)
 
 # Add apples
 apples = []
-for i in range(100):
+for i in range(500):
     apple = Apple(grid, Location(*grid.random_cell()))
     grid.add_entity(apple)
     apples.append(apple)
