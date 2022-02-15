@@ -2,6 +2,7 @@ import sys
 
 import pygame
 
+import keyboard
 from entities.edible import Apple
 from entities.wall import Wall
 from grid import Grid, Location
@@ -29,7 +30,7 @@ snake = Snake(grid)
 
 # Add apples
 apples = []
-for i in range(500):
+for i in range(100):
     apple = Apple(grid, Location(*grid.random_cell()))
     grid.add_entity(apple)
     apples.append(apple)
@@ -48,13 +49,13 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT and snake.curr_direction != Grid.right:
+            if event.key in keyboard.left_keys and snake.curr_direction != Grid.right:
                 snake.move_left()
-            elif event.key == pygame.K_RIGHT and snake.curr_direction != Grid.left:
+            elif event.key in keyboard.right_keys and snake.curr_direction != Grid.left:
                 snake.move_right()
-            elif event.key == pygame.K_UP and snake.curr_direction != Grid.down:
+            elif event.key in keyboard.up_keys and snake.curr_direction != Grid.down:
                 snake.move_up()
-            elif event.key == pygame.K_DOWN and snake.curr_direction != Grid.up:
+            elif event.key in keyboard.down_keys and snake.curr_direction != Grid.up:
                 snake.move_down()
 
     snake.move_forward()
